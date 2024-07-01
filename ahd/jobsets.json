@@ -20,7 +20,7 @@
             },
             "src": {
                 "type":             "git",
-                "value":            "/srv/git/ahd.git master",
+                "value":            "/srv/git/AHD.git master",
                 "emailresponsible": false
             }
         }

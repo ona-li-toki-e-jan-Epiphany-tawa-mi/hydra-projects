@@ -16,12 +16,12 @@
     "inputs": {
         "nixpkgs": {
             "type":             "git",
-            "value":            "/srv/git/repositories/nixpkgs.git nixos-23.11",
+            "value":            "/srv/git/nixpkgs.git nixos-23.11",
             "emailresponsible": false
         },
         "src": {
             "type":             "git",
-            "value":            "/srv/git/repositories/hydra-projects.git master",
+            "value":            "/srv/git/hydra-projects.git master",
             "emailresponsible": false
         }
     }

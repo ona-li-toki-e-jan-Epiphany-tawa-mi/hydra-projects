@@ -15,12 +15,12 @@
         "inputs": {
             "nixpkgs": {
                 "type":             "git",
-                "value":            "/srv/git/repositories/nixpkgs.git nixos-unstable",
+                "value":            "/srv/git/nixpkgs.git nixos-unstable",
                 "emailresponsible": false
             },
             "src": {
                 "type":             "git",
-                "value":            "/srv/git/repositories/COBOL-DVD-Thingy.git master",
+                "value":            "/srv/git/COBOL-DVD-Thingy.git master",
                 "emailresponsible": false
             }
         }

@@ -23,24 +23,14 @@
 # Takes the input from a project JSON file and outputs the JSON describing the
 # jobsets for Hydra to build.
 
-{ declInput # Supplied by hydra.
-, nixpkgs   # nixpkgs to build project against.
+{ nixpkgs   # nixpkgs to build project against.
 , src       # Project source code git repostory URI. Must contain a release.nix jobset.
 , ...
 }:
 
 let pkgs = import nixpkgs {};
-    lib  = pkgs.lib;
-in
-{
-  jobsets = pkgs.runCommand "spec.json" {} ''
-    # Outputs input stuff for debugging.
-    cat <<EOF
-    ${builtins.toJSON declInput}
-    EOF
 
-     # Outputs the actual jobset stuff.
-    echo ${lib.escapeShellArg (builtins.toJSON {
+    jobsetsJSON = pkgs.writeText "jobsets.json" (builtins.toJSON {
       master = {
         enabled = 1;
         hidden  = false;
@@ -68,6 +58,11 @@ in
           };
         };
       };
-    })} > $out
+    });
+in
+{
+  jobsets = pkgs.runCommand "spec.json" {} ''
+    cat ${jobsetsJSON}
+    cat ${jobsetsJSON} > $out
   '';
 }

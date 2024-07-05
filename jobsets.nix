@@ -29,40 +29,35 @@
 }:
 
 let pkgs = import nixpkgs {};
-
-    jobsetsJSON = pkgs.writeText "jobsets.json" (builtins.toJSON {
-      master = {
-        enabled = 1;
-        hidden  = false;
-
-        # Points to nix file containing jobs to run in the project repository.
-        nixexprinput = "src";
-        nixexprpath  = "release.nix";
-
-        checkinterval    = 86400;                 # Runs once every day.
-        schedulingshares = 1;                     # Scheduling priorty.
-        keepnr           = 5;                     # Number of build iterations to keep.
-
-        # Disables email.
-        enableemail   = false;
-        emailoverride = "";
-
-        inputs = {
-          nixpkgs = {
-            type  = "path";
-            value = nixpkgs;
-          };
-          src = {
-            type  = "git";
-            value = src;
-          };
-        };
-      };
-    });
 in
 {
-  jobsets = pkgs.runCommand "spec.json" {} ''
-    cat ${jobsetsJSON}
-    cat ${jobsetsJSON} > $out
-  '';
+  jobsets = pkgs.writeText "spec.json" (builtins.toJSON {
+    master = {
+      enabled = 1;
+      hidden  = false;
+
+      # Points to nix file containing jobs to run in the project repository.
+      nixexprinput = "src";
+      nixexprpath  = "release.nix";
+
+      checkinterval    = 86400;                   # Runs once every day.
+      schedulingshares = 1;                       # Scheduling priorty.
+      keepnr           = 5;                       # Number of build iterations to keep.
+
+      # Disables email.
+      enableemail   = false;
+      emailoverride = "";
+
+      inputs = {
+        nixpkgs = {
+          type  = "path";
+          value = nixpkgs;
+        };
+        src = {
+          type  = "git";
+          value = src;
+        };
+      };
+    };
+  });
 }

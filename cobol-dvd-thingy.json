@@ -22,9 +22,9 @@
             "type":  "git",
             "value": "/srv/git/hydra-projects.git master"
         },
-        "src": {
+        "src" : {
             "type":  "string",
-            "value": "/srv/git/AHD.git master"
+            "value": "/srv/git/COBOL-DVD-Thingy.git master"
         }
     }
 }

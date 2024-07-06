@@ -24,7 +24,7 @@
         },
         "src": {
             "type":  "string",
-            "value": "/srv/git/AHD.git master"
+            "value": "/srv/git/netcatchat.git master"
         }
     }
 }

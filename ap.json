@@ -16,15 +16,15 @@
     "inputs": {
         "nixpkgs": {
             "type":  "git",
-            "value": "/srv/git/nixpkgs.git nixos-unstable"
+            "value": "/srv/git/nixpkgs.git nixos-23.11"
         },
         "hydra": {
             "type":  "git",
             "value": "/srv/git/hydra-projects.git master"
         },
-        "src": {
+        "src" : {
             "type":  "string",
-            "value": "/srv/git/AHD.git master"
+            "value": "/srv/git/ap.git master"
         }
     }
 }
